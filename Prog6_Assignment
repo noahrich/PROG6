@@ -1,0 +1,137 @@
+Assign ID:   PROG6
+
+File name:   robot100.cpp
+
+Givens:      key-robot100.run    (CP repository)
+
+Description: Write a program to simulate the movement of a robot on a
+             2-dimensional grid (0,0) to (10,10). Simple 1-step 
+             moves are supported: L (left), R (right), U (up) and D (down).
+             
+             The robot is positioned on the grid at (0,0) when it is 
+             powered on.
+
+             The robot can not leave the grid. Any move that attempts to
+             leave the grid must be reported "BAD MOVE to (xbad,ybad)"
+             but the move must not be performed. 
+
+
+             The robot must respond to the following commands:
+
+                  Start (S): 
+                      display grid dimensions, starting position
+                      activate the robot (need a bool flag for this)
+
+                  ACTIVE robot must respond to these commands:
+                     WhereIam (W) -- display its (x,y) grid location.
+                     Movement (L, R, U, D).
+                     Terminate(T) --report current position and turn off the
+                                    robot.
+                        NOTE: After termination, NO MOVES should be made.
+
+INPUTS:      (1) From file 'robot100.cmds' -- Robot commands.
+
+
+EXAMPLE: ========================================================
+
+     Input file 'robot100.cmds' : 
+
+                        S B   U U W     R R W
+                        D D W    D D W  M   T  R  T
+
+
+     What should happen:
+
+              -Robot is started at position (0,0).
+              - Ignore bad command 'B'
+               - make 2 UP moves, then display positon 
+               - make 2 RIGHT moves, then display positon 
+               - make 2 DOWN moves, then display positon 
+               - make 2 DOWN moves (invalid), then display positon 
+               - Ignore bad command 'M'
+               - terminate.
+
+
+      Expected outputs:
+
+                 ROBOT TRACKER
+                 =============
+                 STARTED AT POSITION (0,0)
+                 BAD COMMAND 'B' IGNORED.
+                 UP UP 
+                 POS = (0,2)
+                 RIGHT RIGHT 
+                 POS = (2,2)
+                 DOWN DOWN
+                 POS = (2,0)
+                 DOWN BAD MOVE TO (2,-1) 
+                 DOWN BAD MOVE TO (2,-1) 
+                 POS = (2,0)
+                 BAD COMMAND 'B' IGNORED.
+                 TERMINATED AT POSITION (2,0)
+
+                 6 VALID MOVES
+                 2 BAD MOVES
+                 2 BAD COMMANDS
+
+
+
+Algorithm: Code structure shell.
+
+            do 
+            {
+               Read command ;
+
+               //-| Handle the command.
+               switch (command)
+               {
+                        
+                 case 'S': // start robot.
+
+                           break;
+
+                     ...
+
+                 default:  cout << endl << "BAD COMMAND '" << command
+                                << "' IGNORED." << endl;
+                           break;
+               }//end_switch
+            
+
+            }
+            While (command != 'T');
+
+
+  REQUIRED BUILD PLAN:  NO HELP if you deviate from this plan.
+
+       for step 1,2,...,9
+         Complete step.
+         Compile, run, test the program
+
+
+
+  REQUIRED plan to build your program:
+
+          1. Stop the robot.
+
+          2. Start the robot.
+
+          3. Handle BAD commands
+
+          4. Move RIGHT only.
+
+               - handle hitting the boundary
+
+           5. Move UP only
+
+                - handle hitting the boundary
+
+           6.  Move R or U only.
+
+           7. Move LEFT from different positions
+
+           8. Move DOWN from different positions
+
+           9. Any movements, any order.
+
+
